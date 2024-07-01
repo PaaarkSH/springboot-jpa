@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://158.247.253.227:5432/mydatabase
+    username: 'psh950'
+    password: '02070325'
+
+  jpa:
+    properties:
+      hibernate:
+        default_schema: jpa_test01  # 기본 스키마 설정
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database: postgresql
+
+logging:
+  level:
+    # root: DEBUG
+    org.hibernate: DEBUG
