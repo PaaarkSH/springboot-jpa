@@ -1,23 +1,13 @@
 spring:
-  application:
-    name: springboot-jpa
-
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://158.247.253.227:5432/mydatabase
     username: psh950
     password: 02070325
 
   jpa:
     hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        format_sql: true
-        default_schema: jpa_test01
-        show_sql: true
-
-logging:
-  level:
-    com:
-      example:
-        springbootjpa: debug
+    ddl-auto: update
+    show-sql: true
+    database: postgresql
+    default_schema: jpa_test01
