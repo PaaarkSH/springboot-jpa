@@ -6,15 +6,17 @@ spring:
     password: '02070325'
 
   jpa:
+    hibernate:
+      ddl-auto: create
     properties:
       hibernate:
         default_schema: jpa_test01  # 기본 스키마 설정
-    hibernate:
-      ddl-auto: create
-    show-sql: true
+        format_sql: true
+#        show-sql: true
     database: postgresql
 
 logging:
   level:
-    # root: DEBUG
-    org.hibernate: DEBUG
+#    root: DEBUG
+    org.hibernate: debug
+    org.hibernate.type: trace
