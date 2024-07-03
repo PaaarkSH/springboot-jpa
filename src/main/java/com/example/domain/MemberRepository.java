@@ -1,4 +1,4 @@
-package com.example.springbootjpa;
+package com.example.domain;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
