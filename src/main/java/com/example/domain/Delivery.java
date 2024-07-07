@@ -8,11 +8,14 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 public class Delivery {
+    /*
+    * orders 에 delivery_id 가 있음
+    * */
     @Id @GeneratedValue
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delevery ")
+    @OneToOne(mappedBy = "delevery")
     private Order order;
 
     @Embedded

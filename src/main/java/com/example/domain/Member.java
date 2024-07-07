@@ -10,6 +10,9 @@ import java.util.List;
 @Entity
 @Getter @Setter
 public class Member {
+    /*
+    * orders 가 member od 를 가지고있음
+    * */
 
     @Id @GeneratedValue
     private Long id;
