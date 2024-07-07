@@ -1,6 +1,7 @@
 package com.example.domain;
 
 import jakarta.persistence.*;
+import jakarta.servlet.UnavailableException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
+    @OneToOne(mappedBy = "delevery ")
     private Order order;
 
     @Embedded

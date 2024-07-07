@@ -3,6 +3,7 @@ package com.example.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,9 +25,12 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name="delivery_id")
     private Delivery delivery;
 
     private LocalDateTime orderDate;  // 주문 시간
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;  // 주문상태
 }
