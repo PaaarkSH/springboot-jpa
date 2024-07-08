@@ -1,4 +1,4 @@
-package com.example.springbootjpa;
+package com.example;
 
 import lombok.Getter;
 import lombok.Setter;
