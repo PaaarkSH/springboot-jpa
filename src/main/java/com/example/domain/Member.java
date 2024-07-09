@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Member {
     /*
-    * orders 가 member od 를 가지고있음
-    * */
+     * orders 가 member od 를 가지고있음
+     * */
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String username;
 
@@ -23,4 +25,5 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
 }

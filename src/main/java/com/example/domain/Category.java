@@ -8,6 +8,8 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.*;
+
 @Entity
 @Getter @Setter
 public class Category {
@@ -24,7 +26,7 @@ public class Category {
     )  // 다대 다 관계는 그냥 사용할 수 없기 떄문에 중간 계체가 필요함
     private List<Item> items = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
