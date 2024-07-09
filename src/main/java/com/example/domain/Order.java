@@ -24,7 +24,7 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)  // 즉시  로딩
     @JoinColumn(name="member_id")
     private Member member;
 

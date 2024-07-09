@@ -24,7 +24,7 @@ public class Category {
     )  // 다대 다 관계는 그냥 사용할 수 없기 떄문에 중간 계체가 필요함
     private List<Item> items = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
