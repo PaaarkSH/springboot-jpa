@@ -11,9 +11,11 @@ import java.util.List;
 import static jakarta.persistence.FetchType.*;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Category {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "category_id")
     private Long id;
 
@@ -31,5 +33,11 @@ public class Category {
     private Category parent;
 
     @ManyToMany(mappedBy = "parent")
-     private List<Category> child = new ArrayList<>();
+    private List<Category> child = new ArrayList<>();
+
+    // 연관관계 메소드
+    public void addChildCategory(Category child) {
+        this.child.add(child);
+        child.setParent(this);
+    }
 }
