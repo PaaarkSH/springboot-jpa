@@ -3,17 +3,17 @@ package com.example.repository;
 import com.example.domain.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository  {
-    @PersistenceContext
-    private EntityManager em;
-
-//    @PersistenceUnit
-//    private EntityManagerFactory emf;
+    // @PersistenceContext  // 스프링 부트에서 생략 가능
+    private final EntityManager em;
 
     public void save(Member member) {
         em.persist(member);  // 저장하는 로직

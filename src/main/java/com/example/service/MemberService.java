@@ -2,23 +2,28 @@ package com.example.service;
 
 import com.example.domain.Member;
 import com.example.repository.MemberRepository;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class MemberService {
-
-    @Autowired
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     /**
      * 회원 가입
      * */
+    @Transactional  // readOnly false
     public Long join(Member member) {
         validateDuplicateMember(member);
         memberRepository.save(member);
+        return member.getId();
     }
 
     private void validateDuplicateMember(Member member) {
@@ -31,4 +36,11 @@ public class MemberService {
     }
 
     // 회원 전체 조회
+    public List<Member> findAll() {
+        return memberRepository.findAll();
+    }
+
+    public Member findById(Long memberId) {
+         return memberRepository.findOne(memberId);
+    }
 }
