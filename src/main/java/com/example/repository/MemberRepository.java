@@ -2,9 +2,7 @@ package com.example.repository;
 
 import com.example.domain.Member;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.PersistenceUnit;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
