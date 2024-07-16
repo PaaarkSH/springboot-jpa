@@ -2,6 +2,8 @@ package com.example.service;
 
 import com.example.domain.Member;
 import com.example.repository.MemberRepository;
+import jakarta.persistence.EntityManager;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,21 +17,36 @@ class MemberServiceTest {
 
     @Autowired MemberService memberService;
     @Autowired MemberRepository memberRepository;
+    @Autowired EntityManager em;
 
     @Test
+    // @Rollback(value = false)  // test 안에선 디폴트가 롤백
     void 회원가입() throws Exception {
         // give
         Member member = new Member();
         member.setUsername("Park");
         // when
+        Long savedId = memberService.join(member);
 
         // then
+        em.flush();
+        assertEquals(member, memberRepository.findOne(savedId));
     }
 
+    // @Test(excepted = IllegalStateException.class)
     @Test
-    void 중복회원예외() throws Exception {
+    void 중복_회원_예외() throws Exception {
         // give
+        Member member1 = new Member();
+        member1.setUsername("kim");
+        Member member2 = new Member();
+        member2.setUsername("kim");
         // when
-        // then
+        memberService.join(member1);
+        Assertions.assertThrows(IllegalStateException.class, ()-> memberService.join(member2));
+        memberService.join(member2);
+
+         // then
+        fail("예외 발생해야함");
     }
 }
