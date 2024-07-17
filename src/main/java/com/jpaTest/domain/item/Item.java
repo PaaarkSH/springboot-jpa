@@ -1,6 +1,6 @@
-package com.example.domain.item;
+package com.jpaTest.domain.item;
 
-import com.example.domain.Category;
+import com.jpaTest.domain.Category;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,5 +22,5 @@ public abstract class Item {
     private int stockQuantity;
 
     @ManyToMany(mappedBy = "items")
-    private List< Category> categories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 }

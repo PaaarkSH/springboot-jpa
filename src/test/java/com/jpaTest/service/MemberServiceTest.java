@@ -1,7 +1,7 @@
-package com.example.service;
+package com.jpaTest.service;
 
-import com.example.domain.Member;
-import com.example.repository.MemberRepository;
+import com.jpaTest.domain.Member;
+import com.jpaTest.repository.MemberRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -44,7 +44,7 @@ class MemberServiceTest {
         // when
         memberService.join(member1);
         Assertions.assertThrows(IllegalStateException.class, ()-> memberService.join(member2));
-        memberService.join(member2);
+        // memberService.join(member2);
 
          // then
         fail("예외 발생해야함");

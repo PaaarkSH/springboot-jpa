@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.jpaTest.domain;
 
 import jakarta.persistence.Embeddable;
 import lombok.Getter;

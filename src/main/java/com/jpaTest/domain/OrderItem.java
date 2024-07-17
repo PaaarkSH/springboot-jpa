@@ -1,6 +1,6 @@
-package com.example.domain;
+package com.jpaTest.domain;
 
-import com.example.domain.item.Item;
+import com.jpaTest.domain.item.Item;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

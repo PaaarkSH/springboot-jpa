@@ -1,4 +1,4 @@
-package com.example;
+package com.jpaTest;
 
 import lombok.Getter;
 import lombok.Setter;
