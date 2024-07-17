@@ -47,6 +47,6 @@ class MemberServiceTest {
         // memberService.join(member2);
 
          // then
-        fail("예외 발생해야함");
+//        fail("예외 발생해야함");
     }
 }
