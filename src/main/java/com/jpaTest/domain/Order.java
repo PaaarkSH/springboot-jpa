@@ -86,5 +86,13 @@ public class Order {
             orderItem.cancel();
         }
     }
-
+    // == 조회로직 ==
+    /**
+     * 전체 주문 가격 조회
+     * */
+    public int getTotalPrice() {
+        return orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)
+                .sum();
+    }
 }
