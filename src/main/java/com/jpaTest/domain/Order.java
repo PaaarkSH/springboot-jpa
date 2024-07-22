@@ -1,7 +1,9 @@
 package com.jpaTest.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 
@@ -14,7 +16,8 @@ import static jakarta.persistence.FetchType.*;
 @Entity
 @Table(name = "orders")
 @Getter @Setter
-public class Order {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class  Order {
     /*
     * member_id (fk)
     * delivery_id  (fk)
