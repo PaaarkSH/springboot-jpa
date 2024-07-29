@@ -4,9 +4,12 @@ import com.jpaTest.domain.Address;
 import com.jpaTest.domain.Member;
 import com.jpaTest.domain.Order;
 import com.jpaTest.domain.OrderStatus;
+import com.jpaTest.domain.exception.NotEnoughStockException;
 import com.jpaTest.domain.item.Book;
+import com.jpaTest.domain.item.Item;
 import com.jpaTest.repository.OrderRepository;
 import jakarta.persistence.EntityManager;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +34,7 @@ class OrderServiceTest {
         // give
         Member member = createMember();
 
-        Book book = createBook();
+        Book book = createBook("jpa 강의", 10000, 10);
 
         int orderCount = 2;
 
@@ -53,15 +56,33 @@ class OrderServiceTest {
         // Assertions.assertThrows(IllegalStateException.class, ()-> memberService.join(member2));
 
         // give
+        Member member = createMember();
+        Item book = createBook("jpa 강의", 10000, 10);
+
+        int orderCount = 11;
+
         // when
+        //orderService.order(member.getId(), book.getId(), orderCount);
+        Assertions.assertThrows(NotEnoughStockException.class, ()-> orderService.order(member.getId(), book.getId(), orderCount));
+
         // then
+        System.out.println("재고 수량 예외가 발생해야함");
     }
 
     @Test
     public void 주문취소() throws Exception{
         // give
+        Member member = createMember();
+        Book item = createBook("jpa 강의", 10000, 10);
+        int orderCount = 2;
+        Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
         // when
+        orderService.cancel(orderId);
+
         // then
+        Order getOrder = orderRepository.findOne(orderId);
+        assertEquals(getOrder.getStatus(), OrderStatus.CANCEL );
+        assertEquals(10, item.getStockQuantity());
     }
 
     @Test
@@ -71,11 +92,11 @@ class OrderServiceTest {
         // then
     }
 
-    private Book createBook() {
+    private Book createBook(String name, int price, int stockQuantity) {
         Book book = new Book();
-        book.setName("jpa 강의");
-        book.setPrice(10000);
-        book.setStockQuantity(10);
+        book.setName(name);
+        book.setPrice(price);
+        book.setStockQuantity(stockQuantity);
         em.persist(book);
         return book;
     }
