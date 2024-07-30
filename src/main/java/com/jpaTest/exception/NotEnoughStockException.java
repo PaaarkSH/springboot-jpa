@@ -1,4 +1,4 @@
-package com.jpaTest.domain.exception;
+package com.jpaTest.exception;
 
 public class NotEnoughStockException extends RuntimeException {
     public NotEnoughStockException() {

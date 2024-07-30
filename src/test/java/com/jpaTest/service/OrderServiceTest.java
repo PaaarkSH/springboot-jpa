@@ -4,7 +4,7 @@ import com.jpaTest.domain.Address;
 import com.jpaTest.domain.Member;
 import com.jpaTest.domain.Order;
 import com.jpaTest.domain.OrderStatus;
-import com.jpaTest.domain.exception.NotEnoughStockException;
+import com.jpaTest.exception.NotEnoughStockException;
 import com.jpaTest.domain.item.Book;
 import com.jpaTest.domain.item.Item;
 import com.jpaTest.repository.OrderRepository;

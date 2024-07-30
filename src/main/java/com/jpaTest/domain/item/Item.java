@@ -1,7 +1,7 @@
 package com.jpaTest.domain.item;
 
 import com.jpaTest.domain.Category;
-import com.jpaTest.domain.exception.NotEnoughStockException;
+import com.jpaTest.exception.NotEnoughStockException;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
