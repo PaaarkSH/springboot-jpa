@@ -1,5 +1,6 @@
 package com.jpaTest.service;
 
+import com.jpaTest.domain.item.Book;
 import com.jpaTest.domain.item.Item;
 import com.jpaTest.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,15 @@ public class ItemService {
         itemRepository.save(item);
     }
 
+    @Transactional
+    public void updateItem(Long itemId, Book param) {
+        Item findItem = itemRepository.findOne(itemId);  // itemRepository 에서 id 를 기반으로 영속성 컨텍스트인 item 객체를 찾아옴
+        findItem.setName(param.getName());
+        findItem.setPrice(param.getPrice());
+        findItem.setStockQuantity(param.getStockQuantity());
+        // itemRepository 의 save 를 호출할 필요가 없음
+    }
+
     public List<Item> findItems() {
         return itemRepository.findAll();
     }
@@ -26,6 +36,4 @@ public class ItemService {
     public Item findOne(Long id) {
         return itemRepository.findOne(id);
     }
-
-
 }
