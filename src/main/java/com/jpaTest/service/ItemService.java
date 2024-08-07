@@ -21,12 +21,13 @@ public class ItemService {
     }
 
     @Transactional
-    public void updateItem(Long itemId, Book param) {
+    public Item updateItem(Long itemId, Book param) {
         Item findItem = itemRepository.findOne(itemId);  // itemRepository 에서 id 를 기반으로 영속성 컨텍스트인 item 객체를 찾아옴
         findItem.setName(param.getName());
         findItem.setPrice(param.getPrice());
         findItem.setStockQuantity(param.getStockQuantity());
         // itemRepository 의 save 를 호출할 필요가 없음
+        return findItem;
     }
 
     public List<Item> findItems() {
