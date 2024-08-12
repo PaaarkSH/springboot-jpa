@@ -21,9 +21,9 @@ public class ItemService {
     }
 
     @Transactional
-    public void updateItem(Long itemId, UpdateItemDto itemDto ) {
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {  //  UpdateItemDto itemDto
         Item findItem = itemRepository.findOne(itemId);  // itemRepository 에서 id 를 기반으로 영속성 컨텍스트인 item 객체를 찾아옴
-        findItem.change(name, price, stockQuantity);
+        //findItem.change(name, price, stockQuantity);
         findItem.setName(name);
         findItem.setPrice(price);
         findItem.setStockQuantity(stockQuantity);
