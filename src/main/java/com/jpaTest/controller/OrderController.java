@@ -6,9 +6,12 @@ import com.jpaTest.service.ItemService;
 import com.jpaTest.service.MemberService;
 import com.jpaTest.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -31,6 +34,12 @@ public class OrderController {
         model.addAttribute("items", items);
 
         return "order/orderForm";
-
+    }
+    @PostMapping("/order")
+    public String order(@RequestParam("memberId") Long memberId,
+                        @RequestParam("itemId") Long itemId,
+                        @RequestParam("count") int count) {
+        orderService.order(memberId, itemId, count);
+        return "redirect:/order";
     }
 }
