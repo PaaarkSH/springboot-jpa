@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: test
   datasource:
     url: jdbc:postgresql://158.247.253.227:5432/mydatabase
     username: 'psh950'
@@ -7,14 +9,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create  # create: 서버 키면 db 를 그냥 생성함(기존거 지움) # update: 없으면 생성함 # none 아무것도 안함
     properties:
       hibernate:
-        default_schema: jpa_test01  # 기본 스키마 설정
-        format_sql: true
+        default_schema: psh_db  # 기본 스키마 설정
+        format_sql: true  # 쿼리 로그 확인
         show_sql: true
-    show-sql: true
-
+        use_sql_comments: true  # querydsl 쿼리 로그 확인
 logging:
   level:
     org:

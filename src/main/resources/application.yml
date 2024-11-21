@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: local
   datasource:
     url: jdbc:postgresql://158.247.253.227:5432/mydatabase
     username: 'psh950'
@@ -7,15 +9,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         default_schema: psh_db  # 테스트 db 스키마로 이동
         format_sql: true
         show_sql: true  # 쿼리 콘솔 로그 확인
         use_sql_comments: true  # jpql 로그 확인
-    show-sql: true
-
 logging:
   level:
     org:

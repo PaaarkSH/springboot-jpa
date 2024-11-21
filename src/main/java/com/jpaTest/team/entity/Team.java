@@ -12,18 +12,17 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString(of = {"id", "name"})
 @NoArgsConstructor
 public class Team {
-    @Id @GeneratedValue
-    @Column(name = "team_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Member> members = new ArrayList<>();
 
-    // 생성자
     public Team(String name) {
         this.name = name;
     }

@@ -14,33 +14,33 @@
 - member
   - 
         create table psh_db.member (
-        member_id bigint not null,
-        age integer not null,
-        username varchar(255),
-        team_id bigint,
-        primary key (member_id)
+          member_id bigint not null,
+          age integer not null,
+          username varchar(255),
+          team_id bigint,
+          primary key (member_id)
         )
 
         Hibernate:
-        create table psh_db.member (
-        member_id bigint not null,
-        age integer not null,
-        username varchar(255),
-        team_id bigint,
-        primary key (member_id)
+          create table psh_db.member (
+          member_id bigint not null,
+          age integer not null,
+          username varchar(255),
+          team_id bigint,
+          primary key (member_id)
         )
-- team
-  -
-      team_id bigint not null,
-      name varchar(255),
-      primary key (team_id)
-      )
-      Hibernate:
-      create table psh_db.team (
-      team_id bigint not null,
-      name varchar(255),
-      primary key (team_id)
-      )
+  - team
+    -
+        team_id bigint not null,
+        name varchar(255),
+        primary key (team_id)
+        )
+        Hibernate:
+        create table psh_db.team (
+        team_id bigint not null,
+        name varchar(255),
+        primary key (team_id)
+        )
    
 
 ## API 명세

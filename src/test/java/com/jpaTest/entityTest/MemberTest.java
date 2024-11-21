@@ -64,4 +64,5 @@ public class MemberTest {
         }
         // 경고! assert 가 아닌 이런 콘솔 출력은 테스트에 매우 부적합함
     }
+
 }
